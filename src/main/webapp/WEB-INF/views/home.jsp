@@ -88,6 +88,7 @@ header,footer {
 				<li><a href="<c:url value='/comments' />">Submit a Comment</a></li>
 				<li><a href="<c:url value='/books' />">Submit contact
 						information</a></li>
+				<li><a href="<c:url value='/searchBook' />">Search for book</a></li>
 			</ul>
 		</nav>
 		<article>

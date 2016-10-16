@@ -12,5 +12,6 @@ public interface BookService {
 	public List<Book> listBooks();
 	public Book getBookById(int id);
 	public void removeBook(int id);
+	List<Book> searchByBooks(String s);
 	
 }

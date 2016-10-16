@@ -45,5 +45,10 @@ public class BookServiceImpl implements BookService
 	public void removeBook(int id) {
 		this.BookDAO.removeBook(id);
 	}
+	@Override
+	@Transactional
+	public List<Book> searchByBooks(String s) {
+		return this.BookDAO.searchForBook(s);
+	}
 
 }

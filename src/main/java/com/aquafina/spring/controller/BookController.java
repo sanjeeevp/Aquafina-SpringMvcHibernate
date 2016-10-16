@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.aquafina.spring.model.Book;
 import com.aquafina.spring.service.BookService;
@@ -79,15 +80,16 @@ public class BookController {
 	//
 	@RequestMapping(value = "/view/image", method = RequestMethod.GET)
 	public void showImage(@RequestParam("id") Integer id,
-			HttpServletResponse response, HttpServletRequest request) 
-	          throws ServletException, IOException{
+			HttpServletResponse response, HttpServletRequest request)
+			throws ServletException, IOException {
 
-	    Book b = bookService.getBookById(id);        
-	    response.setContentType("image/jpeg, image/jpg, image/png, image/gif");
-	    response.getOutputStream().write(b.getBookImage());
+		Book b = bookService.getBookById(id);
+		response.setContentType("image/jpeg, image/jpg, image/png, image/gif");
+		response.getOutputStream().write(b.getBookImage());
 
-	    response.getOutputStream().close();
+		response.getOutputStream().close();
 	}
+
 	//
 
 	@RequestMapping("/book/remove/{id}")
@@ -123,7 +125,7 @@ public class BookController {
 		model.addAttribute("book", new Book());
 		List<Book> bookList = new ArrayList<Book>();
 		bookList = this.bookService.listBooks();
-		
+
 		Collections.sort(bookList, new Comparator<Book>() {
 			@Override
 			public int compare(Book b1, Book b2) {
@@ -131,10 +133,19 @@ public class BookController {
 			}
 		});
 		model.addAttribute("listBooks", bookList);
-		
-		
-		
 		return "allbookdetails";
+	}
+
+	@RequestMapping(value = "/searchBook", method = RequestMethod.GET)
+	public String searchPage(Model model) {
+		return "search";
+	}
+
+	@RequestMapping(value = "/doSearch")
+	public String searchBooks(@RequestParam("searchText") String searchText, Model model) {
+		model.addAttribute("book", new Book());
+		model.addAttribute("foundBooks", this.bookService.searchByBooks(searchText));
+		return "searchResult";
 	}
 
 }

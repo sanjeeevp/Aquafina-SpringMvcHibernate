@@ -16,6 +16,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.search.annotations.*;
+
 @Entity
 @Table(name = "Book")
 public class Book {
@@ -24,14 +26,17 @@ public class Book {
 	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-
+	
 	@Column(name = "book_name")
+	@Field(index=Index.YES, analyze=Analyze.YES, store=Store.NO)
 	private String bookName;
 
 	@Column(name = "content")
+	@Field(index=Index.YES, analyze=Analyze.YES, store=Store.NO)
 	private String content;
-
+	
 	@Column(name = "book_author")
+	@Field(index=Index.YES, analyze=Analyze.YES, store=Store.NO)
 	private String bookAuthor;
 
 	@Column(name = "book_date")

@@ -91,6 +91,8 @@ header,footer {
 				<li><a href="<c:url value='/books' />">Submit a book</a></li>
 				<li><a href="<c:url value='/books' />">Submit contact
 						information</a></li>
+			
+			</ul>
 			</ul>
 		</nav>
 		<article>
