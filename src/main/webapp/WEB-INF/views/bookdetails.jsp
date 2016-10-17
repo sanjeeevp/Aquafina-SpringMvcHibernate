@@ -77,6 +77,18 @@ header,footer {
 		</header>
 		<nav>
 			<ul>
+				<li>
+					<form method="post" name="frm" action="doSearch">
+						<table border="0" align="center"">
+							<tr>
+								<td><input type="text" name="searchText"
+									placeholder="Search for Books" id="text"></td>
+								<td colspan=2 align="center"><input type="submit"
+									name="submit" value="Search"></td>
+							</tr>
+						</table>
+					</form>
+				</li>
 				<li><a style="color: green; font-size: 14;"
 					href="<c:url value='/home'/>"> HOME </a></li>
 				<li><a href="<c:url value='http://www.google.com' />">Google
