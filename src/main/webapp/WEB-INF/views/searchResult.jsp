@@ -101,7 +101,7 @@ header,footer {
 					</tr>
 					<c:forEach items="${foundBooks}" var="book">
 						<tr>
-							<td>">${book.bookName}</a></td>
+							<td><a href="<c:url value='/book/view/${book.id}' />">${book.bookName}</a></td>
 						</tr>
 					</c:forEach>
 				</table>
